@@ -34,7 +34,7 @@ void ATankPlayerController::AimTowardsCrosshair() {
 	FVector hitLocation;
 
 	if (GetSightRayHitLocation(hitLocation)) {
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *hitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *hitLocation.ToString());
 	}
 }
 
@@ -42,6 +42,12 @@ void ATankPlayerController::AimTowardsCrosshair() {
 // Traces ray from crosshair to world and obtains the location of the hit
 
 bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) const {
+
+	int32 xViewportSize, yViewportSize;
+
+	GetViewportSize(xViewportSize, yViewportSize);
+	FVector2D screenLocation((float)xViewportSize * xCrosshairLocation, (float)yViewportSize * yCrosshairLocation);
+	UE_LOG(LogTemp, Warning, TEXT("Screen Location: %s"), *screenLocation.ToString());
 
 	OutHitLocation = FVector(1.0f);
 	return true;

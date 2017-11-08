@@ -22,6 +22,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+	UPROPERTY(EditAnywhere)
+	float xCrosshairLocation = 0.5f;
+
+	UPROPERTY(EditAnywhere)
+	float yCrosshairLocation = 0.33333f;
+
 	ATank *GetControlledTank() const;
 
 	// Aims barrel at point in world where the crosshair pointing at.
