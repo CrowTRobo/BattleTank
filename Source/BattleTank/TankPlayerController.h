@@ -18,7 +18,13 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 protected:
 	virtual void BeginPlay() override;
 
+public:
+	virtual void Tick(float DeltaTime) override;
+
 private:
 	ATank *GetControlledTank() const;
+
+	// Aims barrel at point in world where the crosshair pointing at.
+	void AimTowardsCrosshair();
 	
 };
