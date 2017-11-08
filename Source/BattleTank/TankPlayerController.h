@@ -27,4 +27,6 @@ private:
 	// Aims barrel at point in world where the crosshair pointing at.
 	void AimTowardsCrosshair();
 	
+	// Traces ray from crosshair to world and obtains the location of the hit
+	bool GetSightRayHitLocation(FVector &OutHitLocation) const;
 };
