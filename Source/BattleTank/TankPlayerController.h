@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Engine/World.h"
 #include "Tank.h"
 #include "TankPlayerController.generated.h"
 
@@ -27,6 +28,9 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float yCrosshairLocation = 0.33333f;
+
+	UPROPERTY(EditAnywhere)
+	float lineTraceRange = 1000000.0f;  // 10km
 
 	ATank *GetControlledTank() const;
 
