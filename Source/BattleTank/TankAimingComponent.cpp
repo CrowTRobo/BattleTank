@@ -35,7 +35,16 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 // Have the tank aim at provided location
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 
-	UE_LOG(LogTemp, Warning, TEXT("Launching at %f"), LaunchSpeed);
+	FVector aimDirection, launchVelocity;
+
+	if (!barrel)
+		return;
+
+	// Calculate aim direction
+	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("Projectile")), HitLocation, LaunchSpeed)) {
+		aimDirection = launchVelocity.GetSafeNormal();
+		UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *aimDirection.ToString());
+	}
 }
 
 // Sets the barrel pointer to the barrel provided
