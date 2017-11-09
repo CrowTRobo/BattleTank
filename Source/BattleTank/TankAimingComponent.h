@@ -3,12 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
-#include "Kismet/GameplayStatics.h"
-#include "Engine/World.h"
 #include "TankAimingComponent.generated.h"
+
+class UTankBarrel;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
@@ -19,20 +17,15 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 	// Have the tank aim at provided location
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 	// Sets the barrel pointer to the barrel provided
-	void SetBarrelReference(UStaticMeshComponent *BarrelToSet);
+	void SetBarrelReference(UTankBarrel *BarrelToSet);
 	
 private:
-	UStaticMeshComponent *barrel = nullptr;
+	UTankBarrel *barrel = nullptr;
+
+	// Moves barrel to proper elevation based on aim direction
+	void MoveBarrelTowards(FVector AimDirection);
 };
