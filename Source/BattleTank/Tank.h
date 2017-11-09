@@ -30,5 +30,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// Have the tank aim at provided location
-	void AimAt(FVector HitLocation);	
+	void AimAt(FVector HitLocation);
+
+	// Sets the barrel pointer in the Aiming Component to the barrel provided
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetBarrelReference(UStaticMeshComponent *BarrelToSet);
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "TankAimingComponent.generated.h"
 
@@ -27,5 +28,10 @@ public:
 
 	// Have the tank aim at provided location
 	void AimAt(FVector HitLocation);
+
+	// Sets the barrel pointer to the barrel provided
+	void SetBarrelReference(UStaticMeshComponent *BarrelToSet);
 	
+private:
+	UStaticMeshComponent *barrel = nullptr;
 };
