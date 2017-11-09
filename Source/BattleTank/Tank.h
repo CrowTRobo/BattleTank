@@ -26,6 +26,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
-	
+	// Have the tank aim at provided location
+	void AimAt(FVector HitLocation);	
 };
