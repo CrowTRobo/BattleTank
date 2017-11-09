@@ -27,7 +27,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	// Have the tank aim at provided location
-	void AimAt(FVector HitLocation);
+	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 	// Sets the barrel pointer to the barrel provided
 	void SetBarrelReference(UStaticMeshComponent *BarrelToSet);

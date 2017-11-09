@@ -36,7 +36,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 // Have the tank aim at provided location
 void ATank::AimAt(FVector HitLocation) {
 
-	aimingComponent->AimAt(HitLocation);
+	aimingComponent->AimAt(HitLocation, launchSpeed);
 }
 
 // Sets the barrel pointer in the Aiming Component to the barrel provided

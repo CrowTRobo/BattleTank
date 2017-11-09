@@ -23,6 +23,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float launchSpeed = 100000.0f;  // 1000 m/s
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
