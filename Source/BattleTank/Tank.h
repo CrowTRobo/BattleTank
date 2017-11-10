@@ -42,4 +42,8 @@ public:
 	// Sets the turret pointer in the Aiming Component to the turret provided
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret *TurretToSet);
+
+	// Fire projectile
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Fire();
 };
