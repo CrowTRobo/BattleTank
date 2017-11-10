@@ -9,6 +9,7 @@
 class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -29,6 +30,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float launchSpeed = 4000.0f;
 
+	UPROPERTY(EditAnywhere, Category = Firing)
+	TSubclassOf<AProjectile> projectileBP;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -46,4 +50,7 @@ public:
 	// Fire projectile
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
+
+private:
+	UTankBarrel *barrel = nullptr;
 };
