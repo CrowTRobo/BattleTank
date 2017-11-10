@@ -25,7 +25,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 		return;
 
 	// Calculate aim direction
-	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("Projectile")), HitLocation, LaunchSpeed)) {
+	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("Projectile")), HitLocation, LaunchSpeed, 
+													false, 0, 0, ESuggestProjVelocityTraceOption::DoNotTrace)) {
+
 		aimDirection = launchVelocity.GetSafeNormal();
 		MoveBarrelTowards(aimDirection);
 		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solved"), GetWorld()->GetTimeSeconds());
