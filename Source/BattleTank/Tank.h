@@ -27,7 +27,7 @@ protected:
 
 public:	
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float launchSpeed = 100000.0f;  // 1000 m/s
+	float launchSpeed = 4000.0f;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

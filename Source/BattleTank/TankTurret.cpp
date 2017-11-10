@@ -3,7 +3,7 @@
 #include "TankTurret.h"
 #include "Engine/World.h"
 
-// Move the barrel the right amount this frame using max elevation speed
+// Move the turret the right amount this frame using max speed
 void UTankTurret::Turn(float RelativeSpeed) {
 
 	RelativeSpeed = FMath::Clamp(RelativeSpeed, -1.0f, 1.0f);
