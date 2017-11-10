@@ -6,6 +6,7 @@
 #include "Projectile.h"
 #include "Engine/World.h"
 
+
 // Sets default values
 ATank::ATank()
 {
@@ -55,13 +56,15 @@ void ATank::SetTurretReference(UTankTurret * TurretToSet) {
 // Fire projectile
 void ATank::Fire() {
 
-	UE_LOG(LogTemp, Warning, TEXT("Fire!"));
-
 	if (!barrel)
 		return;
 
 	// Spawn projectile at the location of the socket on the barrel
-	GetWorld()->SpawnActor<AProjectile>(projectileBP, barrel->GetSocketLocation(FName("ProjectileSpawn")), barrel->GetSocketRotation(FName("ProjectileSpawn")));
+	AProjectile *projectile = GetWorld()->SpawnActor<AProjectile>(projectileBP, 
+													barrel->GetSocketLocation(FName("ProjectileSpawn")), 
+													barrel->GetSocketRotation(FName("ProjectileSpawn")));
+
+	projectile->LaunchProjectile(launchSpeed);
 }
 
 
