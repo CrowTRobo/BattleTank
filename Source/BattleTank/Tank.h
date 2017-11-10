@@ -28,9 +28,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float launchSpeed = 100000.0f;  // 1000 m/s
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 

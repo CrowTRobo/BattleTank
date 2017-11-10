@@ -13,7 +13,8 @@ class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
-	void Elevate(float degreesPerSecond);
+	// -1 is max downward speed, +1 is max up 
+	void Elevate(float RelativeSpeed);
 	
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)

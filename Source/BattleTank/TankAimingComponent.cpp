@@ -28,8 +28,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("Projectile")), HitLocation, LaunchSpeed)) {
 		aimDirection = launchVelocity.GetSafeNormal();
 		MoveBarrelTowards(aimDirection);
-		UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *aimDirection.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solved"), GetWorld()->GetTimeSeconds());
 	}
+	else
+		UE_LOG(LogTemp, Warning, TEXT("%f: Aim not solved"), GetWorld()->GetTimeSeconds());
 }
 
 // Sets the barrel pointer to the barrel provided
@@ -45,5 +47,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 	FRotator barrelRotator = barrel->GetForwardVector().Rotation();
 	FRotator deltaRotator = AimDirection.Rotation() - barrelRotator;
 
-	// Move the barrel the right amount this frame using max elevation speed
+
+	barrel->Elevate(5.0f);
 }
