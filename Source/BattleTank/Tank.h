@@ -27,10 +27,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(EditAnywhere, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float launchSpeed = 4000.0f;
 
-	UPROPERTY(EditAnywhere, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	TSubclassOf<AProjectile> projectileBP;
 
 	// Called to bind functionality to input
@@ -54,6 +54,8 @@ public:
 private:
 	UTankBarrel *barrel = nullptr;
 
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float reloadTimeInSecs = 3.0f;
+	
 	double lastFireTime = 0;
 };
