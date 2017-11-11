@@ -53,4 +53,7 @@ public:
 
 private:
 	UTankBarrel *barrel = nullptr;
+
+	float reloadTimeInSecs = 3.0f;
+	double lastFireTime = 0;
 };
