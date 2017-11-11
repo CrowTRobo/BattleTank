@@ -8,7 +8,6 @@ void ATankPlayerController::BeginPlay() {
 
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController has possessed: %s"), *GetControlledTank()->GetName());
 }
 
 
