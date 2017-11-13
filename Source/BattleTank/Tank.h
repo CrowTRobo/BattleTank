@@ -24,9 +24,6 @@ public:
 protected:
 	UTankAimingComponent *aimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent *movementComponent = nullptr;
-
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
