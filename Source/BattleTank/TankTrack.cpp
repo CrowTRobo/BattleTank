@@ -6,7 +6,7 @@
 // Sets the throttle of track between -1 and +1
 void UTankTrack::SetThrottle(float Throttle) {
 
-	UE_LOG(LogTemp, Warning, TEXT("%s throttle at %f"), *GetName(), Throttle)
+	//UE_LOG(LogTemp, Warning, TEXT("%s throttle at %f"), *GetName(), Throttle)
 	// Apply force to the tank's root component at track location
 	FVector forceApplied = GetForwardVector() * Throttle * maxDriveForce;
 	UPrimitiveComponent *tankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());

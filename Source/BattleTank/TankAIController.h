@@ -19,4 +19,7 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	// How close should AI tanks move to the player before stopping (in cm)
+	float acceptanceRadius = 30.0f;
 };
