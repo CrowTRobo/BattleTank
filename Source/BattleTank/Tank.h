@@ -9,7 +9,6 @@
 class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
-class AProjectile;
 class UTankMovementComponent;
 
 UCLASS()
@@ -22,42 +21,14 @@ public:
 	ATank();
 
 protected:
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent *aimingComponent = nullptr;
-
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	float launchSpeed = 4000.0f;
-
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	TSubclassOf<AProjectile> projectileBP;
+	// Have the tank aim at provided location
+	void AimAt(FVector HitLocation);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	// Have the tank aim at provided location
-	void AimAt(FVector HitLocation);
-
-	// Sets the barrel pointer in the Aiming Component to the barrel provided
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelReference(UTankBarrel *BarrelToSet);
-
-	// Sets the turret pointer in the Aiming Component to the turret provided
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetTurretReference(UTankTurret *TurretToSet);
-
-	// Fire projectile
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void Fire();
-
-private:
-	UTankBarrel *barrel = nullptr;
-
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	float reloadTimeInSecs = 3.0f;
-	
-	double lastFireTime = 0;
 };
