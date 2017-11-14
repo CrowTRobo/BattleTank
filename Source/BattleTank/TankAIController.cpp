@@ -18,8 +18,7 @@ void ATankAIController::Tick(float DeltaTime) {
 	ATank *controlledTank = Cast<ATank>(GetPawn());
 	ATank *playerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	if (!controlledTank || !playerTank) {
-		UE_LOG(LogTemp, Warning, TEXT("TankAIController::Tick - pointers null"))
+	if (!ensure(controlledTank || !playerTank)) {
 		return;
 	}
 

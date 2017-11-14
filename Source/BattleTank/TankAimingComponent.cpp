@@ -29,7 +29,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 
 	FVector aimDirection, launchVelocity;
 
-	if (!barrel)
+	if (!ensure(barrel))
 		return;
 
 	// Calculate aim direction
