@@ -22,6 +22,7 @@ public:
 	ATank();
 
 protected:
+	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent *aimingComponent = nullptr;
 
 	// Called when the game starts or when spawned
