@@ -18,7 +18,7 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
@@ -27,7 +27,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialize(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet);
-	
+
+	// Fire projectile
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Fire();
+
 private:
 	UTankBarrel *barrel = nullptr;
 	UTankTurret *turret = nullptr;
@@ -49,8 +53,4 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	TSubclassOf<AProjectile> projectileBP;
-
-	// Fire projectile
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void Fire();
 };

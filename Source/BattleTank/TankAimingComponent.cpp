@@ -58,9 +58,12 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 // Fire projectile
 void UTankAimingComponent::Fire() {
 
+	if (!ensure(barrel || projectileBP))
+		return;
+
 	bool isReloaded = (FPlatformTime::Seconds() - lastFireTime) > reloadTimeInSecs;
 
-	if (barrel && isReloaded) {
+	if (isReloaded) {
 		// Spawn projectile at the location of the socket on the barrel
 		AProjectile *projectile = GetWorld()->SpawnActor<AProjectile>(projectileBP,
 			barrel->GetSocketLocation(FName("ProjectileSpawn")),
