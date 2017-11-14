@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "TankAimingComponent.generated.h"
 
+UENUM()
+enum class EFiringStatus : uint8 {Locked, Aiming, Reloading};
+
 class UTankBarrel;
 class UTankTurret;
 
@@ -33,4 +36,8 @@ private:
 
 	// Moves barrel to proper elevation based on aim direction
 	void MoveBarrelTowards(FVector AimDirection);
+
+protected:
+	UPROPERTY(BlueprintReadOnly, Category = State)
+	EFiringStatus firingStatus = EFiringStatus::Reloading;
 };
