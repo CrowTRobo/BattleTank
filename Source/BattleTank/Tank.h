@@ -6,8 +6,6 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
-class UTankAimingComponent;
-
 UCLASS()
 class BATTLETANK_API ATank : public APawn
 {
@@ -22,12 +20,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Have the tank aim at provided location
-	void AimAt(FVector HitLocation);
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-private:
-	UTankAimingComponent *aimingComponent = nullptr;
 };
