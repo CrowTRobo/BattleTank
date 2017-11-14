@@ -26,12 +26,12 @@ void ATankAIController::Tick(float DeltaTime) {
 	// Move tank towards player
 	EPathFollowingRequestResult::Type result = MoveToActor(playerTank, acceptanceRadius);
 	
-	if (result == EPathFollowingRequestResult::Failed)
+	/*if (result == EPathFollowingRequestResult::Failed)
 		UE_LOG(LogTemp, Warning, TEXT("%s path following result: Failed"), *controlledTank->GetName())
 	else if (result == EPathFollowingRequestResult::AlreadyAtGoal)
 		UE_LOG(LogTemp, Warning, TEXT("%s path following result: AlreadyAtGoal"), *controlledTank->GetName())
 	else
-		UE_LOG(LogTemp, Warning, TEXT("%s path following result: RequestSuccessful"), *controlledTank->GetName())
+		UE_LOG(LogTemp, Warning, TEXT("%s path following result: RequestSuccessful"), *controlledTank->GetName())*/
 
 	// Aim and fire at player
 	controlledTank->AimAt(playerTank->GetActorLocation());

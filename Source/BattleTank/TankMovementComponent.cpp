@@ -34,6 +34,9 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 
 	//UE_LOG(LogTemp, Warning, TEXT("%s MoveVelocity = %s"), *GetOwner()->GetName(), *MoveVelocity.ToString())
 
-	IntendMoveForward(FVector::DotProduct(MoveVelocity.GetSafeNormal(), GetOwner()->GetActorForwardVector()));
+	FVector intendDirection = MoveVelocity.GetSafeNormal();
+	FVector forwardVector = GetOwner()->GetActorForwardVector();
+	IntendMoveForward(FVector::DotProduct(intendDirection, forwardVector));
+	IntendTurnRight(FVector::CrossProduct(forwardVector, intendDirection).Z);
 }
 
