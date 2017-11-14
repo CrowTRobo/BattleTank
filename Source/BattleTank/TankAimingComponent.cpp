@@ -25,7 +25,7 @@ void UTankAimingComponent::Initialize(UTankBarrel *BarrelToSet, UTankTurret *Tur
 }
 
 // Have the tank aim at provided location
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
+void UTankAimingComponent::AimAt(FVector HitLocation) {
 
 	FVector aimDirection, launchVelocity;
 
@@ -33,7 +33,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 		return;
 
 	// Calculate aim direction
-	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("ProjectileSpawn")), HitLocation, LaunchSpeed, 
+	if (UGameplayStatics::SuggestProjectileVelocity(this, launchVelocity, barrel->GetSocketLocation(FName("ProjectileSpawn")), HitLocation, launchSpeed, 
 													false, 0, 0, ESuggestProjVelocityTraceOption::DoNotTrace)) {
 
 		aimDirection = launchVelocity.GetSafeNormal();

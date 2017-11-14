@@ -7,9 +7,6 @@
 #include "Tank.generated.h"
 
 class UTankAimingComponent;
-class UTankBarrel;
-class UTankTurret;
-class UTankMovementComponent;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -31,4 +28,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	UTankAimingComponent *aimingComponent = nullptr;
 };

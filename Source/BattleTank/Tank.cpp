@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
+#include "TankAimingComponent.h"
 
 // Sets default values
 ATank::ATank()
@@ -14,12 +15,13 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	aimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 
 void ATank::AimAt(FVector HitLocation) {
 
-
+	aimingComponent->AimAt(HitLocation);
 }
 
 // Called to bind functionality to input

@@ -23,7 +23,7 @@ public:
 	UTankAimingComponent();
 
 	// Have the tank aim at provided location
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialize(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet);
@@ -44,10 +44,10 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = State)
 	EFiringStatus firingStatus = EFiringStatus::Locked;
 
-	UPROPERTY(BlueprintReadOnly, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float launchSpeed = 4000.0f;
 
-	UPROPERTY(BlueprintReadOnly, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	TSubclassOf<AProjectile> projectileBP;
 
 	// Fire projectile
