@@ -25,5 +25,9 @@ public:
 	void SetThrottle(float Throttle);
 
 private:
+	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent *HitComponent, AActor * OtherActor, UPrimitiveComponent *otherComponent, FVector NormalImpulse, const FHitResult &Hit);
 };
