@@ -44,6 +44,9 @@ private:
 	// Moves barrel to proper elevation based on aim direction
 	void MoveBarrelTowards(FVector AimDirection);
 
+	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = State)
 	EFiringStatus firingStatus = EFiringStatus::Locked;

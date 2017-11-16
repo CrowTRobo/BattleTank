@@ -17,6 +17,24 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
+void UTankAimingComponent::BeginPlay() {
+
+	Super::BeginPlay();
+
+	// Set now so that initial firing is after reload time
+	lastFireTime = FPlatformTime::Seconds();
+}
+
+void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction) {
+
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	if ((FPlatformTime::Seconds() - lastFireTime) < reloadTimeInSecs) {
+		firingStatus = EFiringStatus::Reloading;
+	}
+
+	// TODO: Add logic for other firing states
+}
 
 void UTankAimingComponent::Initialize(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet) {
 
@@ -43,7 +61,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation) {
 		UE_LOG(LogTemp, Warning, TEXT("%f: Aim not solved"), GetWorld()->GetTimeSeconds());
 }
 
-
 // Moves barrel to proper elevation based on aim direction
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 
@@ -61,9 +78,7 @@ void UTankAimingComponent::Fire() {
 	if (!ensure(barrel || projectileBP))
 		return;
 
-	bool isReloaded = (FPlatformTime::Seconds() - lastFireTime) > reloadTimeInSecs;
-
-	if (isReloaded) {
+	if (firingStatus != EFiringStatus::Reloading) {
 		// Spawn projectile at the location of the socket on the barrel
 		AProjectile *projectile = GetWorld()->SpawnActor<AProjectile>(projectileBP,
 			barrel->GetSocketLocation(FName("ProjectileSpawn")),
