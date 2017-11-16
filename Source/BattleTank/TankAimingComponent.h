@@ -35,6 +35,7 @@ public:
 private:
 	UTankBarrel *barrel = nullptr;
 	UTankTurret *turret = nullptr;
+	FVector aimingDirection;
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float reloadTimeInSecs = 3.0f;
@@ -43,6 +44,8 @@ private:
 
 	// Moves barrel to proper elevation based on aim direction
 	void MoveBarrelTowards(FVector AimDirection);
+
+	bool IsBarrelMoving();
 
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
