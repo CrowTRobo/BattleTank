@@ -26,8 +26,8 @@ void UTankMovementComponent::IntendTurnRight(float Throw) {
 	if (!ensure(leftTrack || !rightTrack))
 		return;
 
-	leftTrack->SetThrottle(Throw);
-	rightTrack->SetThrottle(-Throw);
+	leftTrack->SetThrottle(Throw*2.0f);
+	rightTrack->SetThrottle(-Throw*2.0f);
 }
 
 void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, bool bForceMaxSpeed) {

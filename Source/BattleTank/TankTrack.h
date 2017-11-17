@@ -25,8 +25,15 @@ public:
 	void SetThrottle(float Throttle);
 
 private:
+	float currentThrottle = 0;
+
 	virtual void BeginPlay() override;
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	
+	// Apply sideways force to prevent slipping/sliding
+	void ApplySidewaysForce();
+
+	// Apply forward drive force
+	void DriveTrack();
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent *HitComponent, AActor * OtherActor, UPrimitiveComponent *otherComponent, FVector NormalImpulse, const FHitResult &Hit);
