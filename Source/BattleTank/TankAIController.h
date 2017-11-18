@@ -19,5 +19,5 @@ public:
 
 private:
 	// How close should AI tanks move to the player before stopping (in cm)
-	float acceptanceRadius = 3000.0f;
+	float acceptanceRadius = 8000.0f;
 };

@@ -28,6 +28,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialize(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet);
 
+	EFiringStatus GetFiringStatus() const;
+
 	// Fire projectile
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
@@ -52,7 +54,7 @@ private:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = State)
-	EFiringStatus firingStatus = EFiringStatus::Locked;
+	EFiringStatus firingStatus = EFiringStatus::Reloading;
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float launchSpeed = 4000.0f;

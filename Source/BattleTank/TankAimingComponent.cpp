@@ -46,6 +46,11 @@ void UTankAimingComponent::Initialize(UTankBarrel *BarrelToSet, UTankTurret *Tur
 	turret = TurretToSet;
 }
 
+EFiringStatus UTankAimingComponent::GetFiringStatus() const {
+
+	return firingStatus;
+}
+
 // Have the tank aim at provided location
 void UTankAimingComponent::AimAt(FVector HitLocation) {
 
