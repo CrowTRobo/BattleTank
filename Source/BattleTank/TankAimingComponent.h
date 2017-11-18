@@ -47,8 +47,6 @@ private:
 
 	double lastFireTime = 0;
 
-	int32 roundsLeft = 3;
-
 	// Moves barrel to proper elevation based on aim direction
 	void MoveBarrelTowards(FVector AimDirection);
 
@@ -63,6 +61,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float launchSpeed = 4000.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	int32 roundsLeft = 3;
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	TSubclassOf<AProjectile> projectileBP;
