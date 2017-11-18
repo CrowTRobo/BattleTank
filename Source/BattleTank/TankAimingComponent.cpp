@@ -71,8 +71,10 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 	// Work-out difference between current barrel rotation and AimDirection
 	FRotator barrelRotator = barrel->GetForwardVector().Rotation();
 	FRotator deltaRotator = AimDirection.Rotation() - barrelRotator;
-	barrel->Elevate(deltaRotator.Pitch);
-	turret->Turn(deltaRotator.Yaw);
+
+	// Use GetNormalized to prevent turret from rotating the long way around
+	barrel->Elevate(deltaRotator.GetNormalized().Pitch);
+	turret->Turn(deltaRotator.GetNormalized().Yaw);
 
 	// Store AimDirection for IsBarrelMoving() to use
 	aimingDirection = AimDirection;
