@@ -96,7 +96,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 // Fire projectile
 void UTankAimingComponent::Fire() {
 
-	if (!ensure(barrel || projectileBP))
+	if (!ensure(barrel && projectileBP))
 		return;
 
 	if (firingStatus != EFiringStatus::Reloading && roundsLeft > 0) {
