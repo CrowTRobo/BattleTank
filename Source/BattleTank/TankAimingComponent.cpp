@@ -29,7 +29,10 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if ((FPlatformTime::Seconds() - lastFireTime) < reloadTimeInSecs) {
+	if (roundsLeft <= 0) {
+		firingStatus = EFiringStatus::Empty;
+	}
+	else if ((FPlatformTime::Seconds() - lastFireTime) < reloadTimeInSecs) {
 		firingStatus = EFiringStatus::Reloading;
 	}
 	else if (IsBarrelMoving()) {
@@ -51,6 +54,10 @@ EFiringStatus UTankAimingComponent::GetFiringStatus() const {
 	return firingStatus;
 }
 
+int32 UTankAimingComponent::GetRoundsLeft() const {
+
+	return roundsLeft;
+}
 // Have the tank aim at provided location
 void UTankAimingComponent::AimAt(FVector HitLocation) {
 
@@ -92,7 +99,7 @@ void UTankAimingComponent::Fire() {
 	if (!ensure(barrel || projectileBP))
 		return;
 
-	if (firingStatus != EFiringStatus::Reloading) {
+	if (firingStatus != EFiringStatus::Reloading && roundsLeft > 0) {
 		// Spawn projectile at the location of the socket on the barrel
 		AProjectile *projectile = GetWorld()->SpawnActor<AProjectile>(projectileBP,
 			barrel->GetSocketLocation(FName("ProjectileSpawn")),
@@ -100,6 +107,7 @@ void UTankAimingComponent::Fire() {
 
 		projectile->LaunchProjectile(launchSpeed);
 		lastFireTime = FPlatformTime::Seconds();
+		roundsLeft--;
 	}
 }
 

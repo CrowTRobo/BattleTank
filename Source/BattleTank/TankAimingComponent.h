@@ -7,7 +7,7 @@
 #include "TankAimingComponent.generated.h"
 
 UENUM()
-enum class EFiringStatus : uint8 {Locked, Aiming, Reloading};
+enum class EFiringStatus : uint8 {Locked, Aiming, Reloading, Empty};
 
 class UTankBarrel;
 class UTankTurret;
@@ -30,6 +30,9 @@ public:
 
 	EFiringStatus GetFiringStatus() const;
 
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	int32 GetRoundsLeft() const;
+
 	// Fire projectile
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
@@ -43,6 +46,8 @@ private:
 	float reloadTimeInSecs = 3.0f;
 
 	double lastFireTime = 0;
+
+	int32 roundsLeft = 3;
 
 	// Moves barrel to proper elevation based on aim direction
 	void MoveBarrelTowards(FVector AimDirection);
