@@ -20,7 +20,7 @@ AProjectile::AProjectile()
 	collisionMesh->SetVisibility(false);
 
 	launchBlast = CreateDefaultSubobject<UParticleSystemComponent>(FName("LaunchBlast"));
-	launchBlast->AttachTo(collisionMesh);	
+	launchBlast->AttachToComponent(collisionMesh, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 // Called when the game starts or when spawned
